@@ -19,10 +19,12 @@ const Post = props => {
             </div>
 
             <div className = "post-comments">
-                <CommentSection comments={props.post.comments}/>
+                <CommentSection 
+                post={props.post.comments} 
+                postId={props.post.timestamp}/>
             </div>
 
-            <div className = "add-comment-box">
+            {/* <div className = "add-comment-box">
                 <form>
                     <input 
                      type="text"
@@ -30,7 +32,7 @@ const Post = props => {
                      placeholder="Add a comment..."
                     />
                 </form>
-            </div>
+            </div> */}
             
         </div>
 
