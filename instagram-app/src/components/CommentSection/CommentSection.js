@@ -19,19 +19,27 @@ class CommentSection extends React.Component {
 
     constructor(props){
         super(props);
+        
         this.state = {
-            commentsOnState: props.comments,
-            postIdsOnState: props.postId,
-            comment: " "
+            commentInput: {text: ""}
         }
 
     }
 
-        addComment = ( => {
+    handleChanges = event => {
+        this.setState({
+          commentInput: {
+            text: event.target.value
+        }})
+      }
 
-
-    }
-
+    handleSubmit = event => {
+        event.preventDefault();
+        this.props.addComment(this.state.commentInput.text, this.props.timestamp);
+        this.setState({
+          commentInput: {text: ''}
+        })
+      }
 
     render (){
 
@@ -40,7 +48,7 @@ class CommentSection extends React.Component {
             <div className= "comment-section">
 
                 <div className= "comment-section">
-                    {this.state.commentsOnState.map( (eleComment) =>(
+                    {this.props.comments.map( (eleComment) =>(
                         < Comment 
                             // key={index} // might need to define the key/id somewhere else later
                             comment={eleComment}
@@ -48,11 +56,12 @@ class CommentSection extends React.Component {
                     ))}
                 </div>
 
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <input
                         placeholder="add a comment..."
                         type="text"
-                        value={this.state.comment.text}
+                        value={this.state.commentInput.text}
+                        onChange={this.handleChanges}
                     />
                 </form>
 

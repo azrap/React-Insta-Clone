@@ -20,25 +20,14 @@ const Post = props => {
 
             <div className = "post-comments">
                 <CommentSection 
-                post={props.post.comments} 
-                postId={props.post.timestamp}/>
+                comments={props.post.comments} 
+                timestamp={props.post.timestamp}
+                addComment={props.addComment}/>
             </div>
 
-            {/* <div className = "add-comment-box">
-                <form>
-                    <input 
-                     type="text"
-                     name="comment"
-                     placeholder="Add a comment..."
-                    />
-                </form>
-            </div> */}
-            
         </div>
 
     )
-
-
 
 }
 
