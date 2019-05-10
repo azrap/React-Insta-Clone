@@ -43,3 +43,14 @@
 - Persist your data using `localStorage`. If done correctly, you will be able to refresh your page and still see your new comments.
 - Add the ability to delete a comment from your data. If your data is in `localhost`, make sure to delete it from there as well.
 - Implement a third-party library that does "fuzzy" searches into your search bar functionality (ie - search terms that aren't exact, like "phils" or "coffeephilz", would still return the username "philzcoffe").
+
+
+- Dustin's Comment Setup:
+
+My setup would be something like this:
+
+- App manages state for all posts and comments
+- App has a function for adding a comment that's passed down as a cb function to the comment form
+- CommentSection manages state for the input
+- CommentSection invokes the addComment function that was passed down, and passes in the new comment
+- Inside addComment in App, take the new comment as an argument and add it to the correct post (that means you'll probably need the postId passed in with the button click as well, so you can find the correct post...)
